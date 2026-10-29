@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5ead5">
+  <meta name="description" content="DearDays — your little vintage diary for memories.">
+  <title>DearDays | My Little Diary</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <div class="paper-grain" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#home" data-route="home">
+      DearDays <span>♥</span>
+      <small>my little diary</small>
+    </a>
+
+    <nav aria-label="Main navigation">
+      <a href="#home" data-route="home">Home</a>
+      <a href="#write" data-route="diary">Diary</a>
+      <a href="#calendar" data-route="calendar">Calendar</a>
+      <a href="#memories" data-route="memories">Memories</a>
+      <a href="#music" data-route="music">Music</a>
+      <a href="#about" data-route="about">About</a>
+    </nav>
+
+    <button id="themeToggle" class="icon-button" type="button"
+      aria-label="Toggle dark theme" title="Toggle dark mode">☾</button>
+  </header>
+
+  <main class="page-shell">
+
+    <!-- ================= HOME PAGE ================= -->
+    <section class="route-page active" data-page="home" id="home">
+
+      <section class="welcome-card">
+        <div class="welcome-copy">
+          <p class="eyebrow">A LITTLE SPACE JUST FOR YOU</p>
+          <h1>Dear me, <em>let's remember.</em></h1>
+          <p>
+            Collect the little moments, messy thoughts, happy days
+            and everything in between.
+          </p>
+          <a class="primary-button" href="#write" data-route="diary">
+            Write today's entry <span>↗</span>
+          </a>
+          <div class="handwritten tiny">made slowly, with love ♡</div>
+        </div>
+
+        <div class="welcome-art">
+          <div class="sun-stamp">TODAY<br><span>is a gift</span></div>
+          <div class="mini-polaroid">
+            <div class="photo-placeholder">✿</div>
+            <p>little by little</p>
+          </div>
+          <span class="doodle doodle-one">✧</span>
+          <span class="doodle doodle-two">♡</span>
+        </div>
+      </section>
+
+      <section class="settings-panel" aria-label="Personalize your diary">
+        <div>
+          <p class="eyebrow">MAKE IT YOURS</p>
+          <h2>Personalize my diary</h2>
+        </div>
+
+        <div class="settings-controls">
+          <label>
+            Theme
+            <select id="themePreset">
+              <option value="classic">Vintage cream</option>
+              <option value="blush">Dusty rose</option>
+              <option value="sage">Sage garden</option>
+              <option value="lavender">Soft lavender</option>
+            </select>
+          </label>
+
+          <label>
+            Font
+            <select id="fontChoice">
+              <option value="classic">Elegant serif</option>
+              <option value="hand">Handwritten</option>
+              <option value="clean">Simple and clean</option>
+            </select>
+          </label>
+
+          <label>
+            Background
+            <select id="backgroundChoice">
+              <option value="paper">Vintage paper</option>
+              <option value="grid">Notebook lines</option>
+              <option value="plain">Plain</option>
+            </select>
+          </label>
+        </div>
+      </section>
+
+      <section class="stats-row">
+        <article class="stat-card">
+          <span class="stat-icon">📖</span>
+          <div>
+            <strong id="entryCount">0</strong>
+            <span>diary entries</span>
+          </div>
+        </article>
+
+        <article class="stat-card">
+          <span class="stat-icon">♡</span>
+          <div>
+            <strong id="favouriteCount">0</strong>
+            <span>favourite moments</span>
+          </div>
+        </article>
+
+        <article class="stat-card">
+          <span class="stat-icon">☀</span>
+          <div>
+            <strong id="todayMood">Not yet</strong>
+            <span>today's mood</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="home-shortcuts">
+        <p class="eyebrow">YOUR LITTLE CORNER</p>
+        <h2>Where would you like to wander? <span>♡</span></h2>
+
+        <div class="shortcut-grid">
+          <a class="shortcut-card" href="#write" data-route="diary">
+            <span>📖</span>
+            <h3>My Diary</h3>
+            <p>Write down the things on your mind.</p>
+            <b>Open diary ↗</b>
+          </a>
+
+          <a class="shortcut-card" href="#calendar" data-route="calendar">
+            <span>🗓️</span>
+            <h3>Memory Calendar</h3>
+            <p>Visit the dates that mean something to you.</p>
+            <b>Open calendar ↗</b>
+          </a>
+
+          <a class="shortcut-card" href="#memories" data-route="memories">
+            <span>📷</span>
+            <h3>Little Memories</h3>
+            <p>Keep your photos, videos and voice notes.</p>
+            <b>Open memories ↗</b>
+          </a>
+
+          <a class="shortcut-card" href="#music" data-route="music">
+            <span>♫</span>
+            <h3>My Music</h3>
+            <p>Listen to a song that holds a memory.</p>
+            <b>Open music ↗</b>
+          </a>
+        </div>
+      </section>
+    </section>
+
+    <!-- ================= DIARY PAGE ================= -->
+    <section class="route-page" data-page="diary">
+
+      <div class="page-intro">
+        <p class="eyebrow">YOUR WORDS, YOUR WORLD</p>
+        <h1>Dear diary, <em>it's me again.</em></h1>
+        <p>A safe little place for your thoughts, feelings and everyday stories.</p>
+      </div>
+
+      <section id="write" class="write-layout">
+        <div class="section-title">
+          <p class="eyebrow">DEAR DIARY</p>
+          <h2 id="formHeading">A page for today <span>✎</span></h2>
+          <p>There is no right way to write your story.</p>
+        </div>
+
+        <form id="entryForm" class="diary-form">
+          <input type="hidden" id="entryId">
+
+          <label for="entryTitle">Entry title</label>
+          <input id="entryTitle" maxlength="90"
+            placeholder="A little thing worth remembering..." required>
+
+          <div class="form-row">
+            <label>
+              Date
+              <input id="entryDate" type="date" required>
+            </label>
+
+            <label>
+              Time
+              <input id="entryTime" type="time" required>
+            </label>
+          </div>
+
+          <label for="entryMood">How are you feeling?</label>
+          <select id="entryMood">
+            <option value="😊 Happy">😊 Happy</option>
+            <option value="😌 Peaceful">😌 Peaceful</option>
+            <option value="🥰 Loved">🥰 Loved</option>
+            <option value="🤩 Excited">🤩 Excited</option>
+            <option value="😐 Okay">😐 Okay</option>
+            <option value="😔 Sad">😔 Sad</option>
+            <option value="😣 Stressed">😣 Stressed</option>
+            <option value="😴 Tired">😴 Tired</option>
+          </select>
+
+          <label for="entryText">Your thoughts</label>
+          <textarea id="entryText" rows="6" maxlength="10000"
+            placeholder="Start wherever your heart wants to begin..." required></textarea>
+
+          <div class="form-footer">
+            <span class="handwritten">your words stay in this browser ♡</span>
+
+            <div class="form-actions">
+              <button id="cancelEdit" class="secondary-button hidden" type="button">
+                Cancel edit
+              </button>
+              <button class="primary-button" type="submit" id="saveButton">
+                Save this page ♡
+              </button>
+            </div>
+          </div>
+
+          <p class="privacy-note">
+            Saved on this device in your browser. There is no cloud backup.
+          </p>
+        </form>
+      </section>
+
+      <section class="entries-section">
+        <div class="section-title entries-heading">
+          <div>
+            <p class="eyebrow">YOUR LITTLE TIME CAPSULE</p>
+            <h2>Pages from my diary <span>♡</span></h2>
+            <p>Your saved entries, arranged by date.</p>
+          </div>
+
+          <input id="searchInput" class="search-input" type="search"
+            placeholder="Search memories..." aria-label="Search memories">
+        </div>
+
+        <div class="filter-row">
+          <label>
+            Filter by mood
+            <select id="moodFilter">
+              <option value="all">All moods</option>
+              <option value="😊 Happy">😊 Happy</option>
+              <option value="😌 Peaceful">😌 Peaceful</option>
+              <option value="🥰 Loved">🥰 Loved</option>
+              <option value="🤩 Excited">🤩 Excited</option>
+              <option value="😐 Okay">😐 Okay</option>
+              <option value="😔 Sad">😔 Sad</option>
+              <option value="😣 Stressed">😣 Stressed</option>
+              <option value="😴 Tired">😴 Tired</option>
+            </select>
+          </label>
+
+          <label class="check-filter">
+            <input id="favoritesOnly" type="checkbox">
+            Show favourites only ♥
+          </label>
+
+          <button id="resetFilters" class="text-button" type="button">
+            Clear filters
+          </button>
+        </div>
+
+        <div id="entriesList" class="entries-grid" aria-live="polite"></div>
+
+        <div id="emptyState" class="empty-state">
+          <span>✿</span>
+          <h3>Your story starts here</h3>
+          <p>Write your first diary entry and watch your collection grow.</p>
+          <a class="text-link" href="#write" data-route="diary">Write the first page ↗</a>
+        </div>
+      </section>
+    </section>
+
+    <!-- ================= CALENDAR PAGE ================= -->
+    <section class="route-page" data-page="calendar" id="calendar">
+
+      <div class="page-intro">
+        <p class="eyebrow">MEMORIES THROUGH TIME</p>
+        <h1>My memory <em>calendar.</em></h1>
+        <p>Every date holds a possibility. Choose a day to find its diary entries.</p>
+      </div>
+
+      <section class="calendar-section">
+        <div class="calendar-card">
+          <div class="calendar-toolbar">
+            <button id="prevMonth" class="secondary-button" type="button"
+              aria-label="Previous month">←</button>
+            <h3 id="calendarTitle">Month Year</h3>
+            <button id="nextMonth" class="secondary-button" type="button"
+              aria-label="Next month">→</button>
+          </div>
+
+          <div class="calendar-weekdays">
+            <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span>
+            <span>Thu</span><span>Fri</span><span>Sat</span>
+          </div>
+
+          <div id="calendarDays" class="calendar-days"></div>
+
+          <div class="calendar-footer">
+            <p id="calendarSelection">Showing all dates</p>
+            <div class="form-actions">
+              <button id="clearDateFilter" class="text-button" type="button">
+                Show all dates
+              </button>
+              <button id="viewSelectedEntries" class="primary-button" type="button">
+                View diary entries ↗
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="calendar-legend">
+        <span class="legend-dot"></span>
+        <span>A little dot means you have diary entries on that date.</span>
+      </div>
+    </section>
+
+    <!-- ================= MEMORIES PAGE ================= -->
+    <section class="route-page" data-page="memories" id="memories">
+
+      <div class="page-intro">
+        <p class="eyebrow">LITTLE MOMENTS, FOREVER</p>
+        <h1>Collected <em>memories.</em></h1>
+        <p>Save a picture, a moving moment, or a voice note you want to remember.</p>
+      </div>
+
+      <!-- PHOTO MEMORIES -->
+      <section class="photo-section">
+        <div class="section-title">
+          <p class="eyebrow">LITTLE MOMENTS, FOREVER</p>
+          <h2>My photo memories <span>♡</span></h2>
+          <p>Snapshots of things you want to remember.</p>
+        </div>
+
+        <form id="photoForm" class="photo-form">
+          <div class="photo-form-copy">
+            <span class="photo-form-icon">📷</span>
+            <h3>Keep a little memory</h3>
+            <p>Add a photo, caption and date to your collection.</p>
+          </div>
+
+          <div class="photo-fields">
+            <label for="photoFile">Choose a photo</label>
+            <input id="photoFile" type="file" accept="image/*" required>
+
+            <label for="photoCaption">Memory caption</label>
+            <input id="photoCaption" type="text" maxlength="80"
+              placeholder="A day worth remembering..." required>
+
+            <label for="photoDate">Memory date</label>
+            <input id="photoDate" type="date" required>
+
+            <button class="primary-button" type="submit">Keep this memory ♡</button>
+          </div>
+        </form>
+
+        <div id="photoGallery" class="photo-gallery" aria-live="polite"></div>
+
+        <div id="photoEmpty" class="photo-empty">
+          <span>✿</span>
+          <h3>Your memories will bloom here</h3>
+          <p>Add your first photo to begin your collection.</p>
+        </div>
+      </section>
+
+      <!-- VIDEO MEMORIES -->
+      <section class="media-section">
+        <div class="section-title">
+          <p class="eyebrow">LITTLE MOVING MEMORIES</p>
+          <h2>My video memories <span>♡</span></h2>
+          <p>Save short clips with a caption and date.</p>
+        </div>
+
+        <form id="videoForm" class="media-form">
+          <label for="videoFile">Choose a video</label>
+          <input id="videoFile" type="file" accept="video/*" required>
+
+          <label for="videoCaption">Caption</label>
+          <input id="videoCaption" type="text" maxlength="80"
+            placeholder="A moment in motion..." required>
+
+          <label for="videoDate">Date</label>
+          <input id="videoDate" type="date" required>
+
+          <button id="saveVideoButton" class="primary-button" type="submit">
+            Save video ♡
+          </button>
+          <p class="privacy-note">Large videos may exceed browser storage limits.</p>
+        </form>
+
+        <div id="videoGallery" class="media-gallery"></div>
+        <p id="videoEmpty" class="media-empty">Your saved videos will appear here ♡</p>
+      </section>
+
+      <!-- VOICE MEMORIES -->
+      <section class="media-section">
+        <div class="section-title">
+          <p class="eyebrow">YOUR VOICE, YOUR STORY</p>
+          <h2>Voice memories <span>♡</span></h2>
+          <p>Record a little thought or save a spoken memory.</p>
+        </div>
+
+        <div class="voice-box">
+          <span class="voice-icon">🎙️</span>
+          <p id="voiceStatus">Ready when you are.</p>
+
+          <div class="form-actions">
+            <button id="startRecording" class="primary-button" type="button">
+              Start recording
+            </button>
+            <button id="stopRecording" class="secondary-button" type="button" disabled>
+              Stop &amp; save
+            </button>
+          </div>
+
+          <p class="privacy-note">
+            Microphone permission is required. Recordings stay in this browser.
+          </p>
+        </div>
+
+        <div id="voiceGallery" class="media-gallery"></div>
+        <p id="voiceEmpty" class="media-empty">Your voice memories will appear here ♡</p>
+      </section>
+
+      <!-- MOOD HISTORY -->
+      <section class="mood-history-section">
+        <div class="section-title">
+          <p class="eyebrow">A LITTLE CHECK-IN WITH YOURSELF</p>
+          <h2>My mood history <span>♡</span></h2>
+          <p>Your moods from saved diary entries, shown by date.</p>
+        </div>
+
+        <div id="moodHistory" class="mood-history"></div>
+      </section>
+    </section>
+
+    <!-- ================= MUSIC PAGE ================= -->
+    <section class="route-page" data-page="music" id="music">
+
+      <div class="page-intro">
+        <p class="eyebrow">A SOUNDTRACK FOR THE SOUL</p>
+        <h1>Press play. <em>Stay a little.</em></h1>
+        <p>Some songs bring back whole chapters of our lives.</p>
+      </div>
+
+      <section class="music-section">
+        <div class="music-copy">
+          <p class="eyebrow">YOUR PERSONAL SOUNDTRACK</p>
+          <h2>Let the music<br><em>bring it back.</em></h2>
+          <p>Choose a song saved on your device and let the memories find their way back.</p>
+          <p class="handwritten">Every song holds a little story ♡</p>
+        </div>
+
+        <div class="music-player">
+          <div class="record-wrap">
+            <div class="record" id="musicRecord">
+              <div class="record-center">DD<span>♡</span></div>
+            </div>
+          </div>
+
+          <h3 id="musicTrackName">Your favourite song</h3>
+          <p class="track-subtitle">YOUR LITTLE MEMORY PLAYER</p>
+
+          <div class="player-controls">
+            <button id="musicChoose" type="button" aria-label="Choose song" title="Choose song">＋</button>
+            <button id="musicPlay" class="play-btn" type="button"
+              aria-label="Play music" title="Play or pause">▶</button>
+            <button id="musicStop" type="button" aria-label="Stop music" title="Stop">■</button>
+          </div>
+
+          <label class="music-upload" for="musicFile">
+            ♫ Choose a song from your device
+          </label>
+          <input id="musicFile" type="file" accept="audio/*" hidden>
+          <audio id="musicAudio" preload="metadata"></audio>
+
+          <p class="music-hint">Your selected song is stored locally in this browser.</p>
+          <p class="privacy-note">Only choose audio files you are allowed to use.</p>
+        </div>
+      </section>
+    </section>
+
+    <!-- ================= ABOUT PAGE ================= -->
+    <section class="route-page" data-page="about" id="about">
+
+      <div class="page-intro">
+        <p class="eyebrow">A NOTE FROM DEARDAYS</p>
+        <h1>A little place to <em>come back to.</em></h1>
+        <p>Life moves quickly. This corner is a reminder to pause and keep the little things.</p>
+      </div>
+
+      <section class="about-story">
+        <div class="about-stamp">MADE WITH<br><span>♡ care</span></div>
+        <p class="eyebrow">THE STORY BEHIND THIS LITTLE CORNER</p>
+        <h2>DearDays is your personal digital diary.</h2>
+        <p>
+          Write about your day, mark your mood, collect photographs,
+          save short videos and voice recordings, and listen to songs
+          that mean something to you.
+        </p>
+        <p>
+          Its vintage-paper look is inspired by old notebooks, handwritten
+          letters, pressed flowers and little keepsakes.
+        </p>
+        <p class="handwritten">Your story doesn't have to be perfect. It just has to be yours. ♡</p>
+      </section>
+
+      <section class="closing-note">
+        <span class="note-flower">✿</span>
+        <p class="handwritten">A gentle reminder</p>
+        <h2>You don't have to make every day extraordinary.<br>
+          <em>Just notice the little things.</em>
+        </h2>
+        <p class="privacy-note">
+          DearDays saves data in this browser on this device.
+          It does not provide server login, account recovery or cloud backup.
+          Clearing browser data may remove saved memories.
+        </p>
+        <span class="note-heart">♡</span>
+      </section>
+    </section>
+
+  </main>
+
+  <footer>
+    <a href="#home" data-route="home">DearDays ♥</a>
+    <p>A little corner for all the things you want to remember.</p>
+    <small>Made with a little daydreaming · Your entries stay in this browser</small>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
